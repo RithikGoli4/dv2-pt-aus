@@ -1,6 +1,6 @@
 export default {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Median weekly household income: 2009-10 to 2019-20 (2020 dollars)",
+  "title": "Mean weekly household income: 2009-10 to 2019-20 (2019-20 dollars)",
   "data": {"url": "data/hhld_income_trend.csv"},
   "mark": {"type": "line", "point": true, "strokeWidth": 3},
   "encoding": {
@@ -13,7 +13,7 @@ export default {
     "y": {
       "field": "value",
       "type": "quantitative",
-      "title": "Income ($/wk, 2020 dollars)"
+      "title": "Income ($/wk, 2019-20 dollars)"
     },
     "color": {
       "field": "measure",
@@ -23,8 +23,8 @@ export default {
     }
   },
   "transform": [
-    {"fold": ["gross_median", "disp_median"], "as": ["measure", "value"]},
-    {"calculate": "datum.measure == 'gross_median' ? 'Gross' : 'Equivalised disposable'", "as": "measure"}
+    {"fold": ["gross_mean", "disp_mean"], "as": ["measure", "value"]},
+    {"calculate": "datum.measure == 'gross_mean' ? 'Gross' : 'Equivalised disposable'", "as": "measure"}
   ],
   "tooltip": [
     {"field": "year", "type": "nominal"},
