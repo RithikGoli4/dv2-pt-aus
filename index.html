@@ -30,14 +30,23 @@
     Source: ABS Household Income and Wealth, Australia, 2019-20</small></p>
   </section>
 
+  <section id="state-map">
+  <h2>Where the money is: state view</h2>
+  <div id="vis02"></div>
+  <p><small>Source: ABS Census 2021 – Total personal income (weekly)</small></p>
+  </section>
+
   <footer>
-    Authored by YOUR-NAME | October 2025 | Data: ABS (CC-BY 4.0)
+    Authored by Rithik Goli | October 2025 
   </footer>
 
   <!-- Vega-Embed calls (bottom of body, after DOM exists) -->
   <script type="module">
     import spec01 from './js/graph_01_income_trend.js';
     vegaEmbed('#vis01', spec01, {actions:false});
+
+    import spec02 from './js/graph_02_map_income_state.js';
+    vegaEmbed('#vis02', spec02, {actions:false});
   </script>
 </body>
 </html>

@@ -1,14 +1,14 @@
 export default {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Mean weekly household income: 2009-10 to 2019-20 (2019-20 dollars)",
-  "data": {"url": "data/hhld_income_trend.csv"},
-  "mark": {"type": "line", "point": true, "strokeWidth": 3},
+  "title": "Weekly household income trends (2000-01 to 2019-20, 2019-20 dollars)",
+  "data": {"url": "data/hhld_income_full.csv"},
+  "mark": {"type": "line", "point": true, "strokeWidth": 2.5},
   "encoding": {
     "x": {
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "axis": {"labelAngle": 0}
+      "axis": {"labelAngle": -45}
     },
     "y": {
       "field": "value",
@@ -19,18 +19,37 @@ export default {
       "field": "measure",
       "type": "nominal",
       "title": null,
-      "scale": {"range": ["#0072b2", "#d55e00"]}
+      "scale": {
+        "domain": [
+          "Gross (mean)",
+          "Gross (median)",
+          "Equivalised disposable (mean)",
+          "Equivalised disposable (median)"
+        ],
+        "range": ["#0072b2", "#d55e00", "#f0e442", "#56b4e9"]
+      }
     }
   },
   "transform": [
-    {"fold": ["gross_mean", "disp_mean"], "as": ["measure", "value"]},
-    {"calculate": "datum.measure == 'gross_mean' ? 'Gross' : 'Equivalised disposable'", "as": "measure"}
+    {
+      "fold": [
+        "gross_mean",
+        "gross_median",
+        "disp_mean",
+        "disp_median"
+      ],
+      "as": ["measure", "value"]
+    },
+    {
+      "calculate": "datum.measure == 'gross_mean' ? 'Gross (mean)' : datum.measure == 'gross_median' ? 'Gross (median)' : datum.measure == 'disp_mean' ? 'Equivalised disposable (mean)' : 'Equivalised disposable (median)'",
+      "as": "measure"
+    }
   ],
   "tooltip": [
     {"field": "year", "type": "nominal"},
     {"field": "measure", "type": "nominal"},
     {"field": "value", "type": "quantitative", "format": "$.0f"}
   ],
-  "width": 600,
-  "height": 300
+  "width": 700,
+  "height": 400
 };
