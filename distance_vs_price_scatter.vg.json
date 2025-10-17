@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "House Price vs Distance from CBD",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "houses.csv"
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "Distance",
+      "type": "quantitative",
+      "title": "Distance from CBD (km)"
+    },
+    "y": {
+      "field": "Price",
+      "type": "quantitative",
+      "title": "Price ($)"
+    },
+    "color": {
+      "field": "Price",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"}
+    },
+    "tooltip": [
+      {"field": "Suburb", "type": "nominal"},
+      {"field": "Distance", "type": "quantitative"},
+      {"field": "Price", "type": "quantitative"}
+    ]
+  }
+}

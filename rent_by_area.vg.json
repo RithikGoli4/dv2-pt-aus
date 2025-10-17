@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Melbourne Median Rent For 1 Bedroom Apartment",
+  "title": "Melbourne Median Rent by Apartment/House Type",
   "width": 600,
   "height": 600,
 
@@ -9,7 +9,30 @@
     "format": {"type": "topojson", "feature": "SA4_2021_AUST_GDA94"}
   },
 
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "mercator",
+    "scale": 20000,
+    "center": [145.0, -37.85]
+  },
+
+  "params": [
+    {
+      "name": "typeSelector",
+      "value": "1 Bedroom Flat",
+      "bind": {
+        "input": "select",
+        "options": [
+          "1 Bedroom Flat",
+          "2 Bedroom Flat",
+          "3 Bedroom Flat",
+          "2 Bedroom House",
+          "3 Bedroom House",
+          "4 Bedroom House"
+        ],
+        "name": "Apartment/House Type: "
+      }
+    }
+  ],
 
   "layer": [
     {
@@ -27,8 +50,19 @@
           "from": {
             "data": {"url": "rent_medians.csv"},
             "key": "Area",
-            "fields": ["Median Rent"]
+            "fields": [
+              "1 Bedroom Flat",
+              "2 Bedroom Flat",
+              "3 Bedroom Flat",
+              "2 Bedroom House",
+              "3 Bedroom House",
+              "4 Bedroom House"
+            ]
           }
+        },
+        {
+          "calculate": "datum[typeSelector]",
+          "as": "Median Rent"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
@@ -41,7 +75,8 @@
         },
         "tooltip": [
           {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"},
-          {"field": "Median Rent", "type": "quantitative", "title": "Median Rent ($)"}
+          {"field": "Median Rent", "type": "quantitative", "title": "Median Rent ($)"},
+          {"field": "typeSelector", "type": "nominal", "title": "Type"}
         ]
       }
     }

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Annualized Rent and Income by Suburb",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {"Suburb":"Dandenong North-Endeavour Hills", "Rent":325, "Income":48113},
+      {"Suburb":"St Albans-Deer Park", "Rent":310, "Income":41247},
+      {"Suburb":"Pascoe Vale-Coburg North", "Rent":290, "Income":65771},
+      {"Suburb":"Brighton East", "Rent":265, "Income":66665},
+      {"Suburb":"Mount Waverley", "Rent":262, "Income":52010}
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "datum.Rent * 12",
+      "as": "Rent"
+    },
+    {
+      "fold": ["Rent", "Income"],
+      "as": ["Category", "Value"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Suburb", "type": "nominal", "title": "Suburb"},
+    "y": {"field": "Value", "type": "quantitative", "title": "Amount ($)"},
+    "color": {"field": "Category", "type": "nominal", "title": "Type"},
+    "tooltip": [
+      {"field": "Suburb", "type": "nominal"},
+      {"field": "Category", "type": "nominal"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  }
+}

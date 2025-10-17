@@ -1,0 +1,271 @@
+Year,Area,Apartment Type,Median Rent
+2020,Melbourne - Inner,1 Bedroom Flat,350
+2021,Melbourne - Inner,1 Bedroom Flat,370
+2022,Melbourne - Inner,1 Bedroom Flat,390
+2023,Melbourne - Inner,1 Bedroom Flat,410
+2024,Melbourne - Inner,1 Bedroom Flat,430
+2020,Melbourne - Inner East,1 Bedroom Flat,320
+2021,Melbourne - Inner East,1 Bedroom Flat,330
+2022,Melbourne - Inner East,1 Bedroom Flat,350
+2023,Melbourne - Inner East,1 Bedroom Flat,360
+2024,Melbourne - Inner East,1 Bedroom Flat,370
+2020,Melbourne - West,1 Bedroom Flat,280
+2021,Melbourne - West,1 Bedroom Flat,290
+2022,Melbourne - West,1 Bedroom Flat,300
+2023,Melbourne - West,1 Bedroom Flat,310
+2024,Melbourne - West,1 Bedroom Flat,320
+2020,Melbourne - North West,1 Bedroom Flat,300
+2021,Melbourne - North West,1 Bedroom Flat,310
+2022,Melbourne - North West,1 Bedroom Flat,320
+2023,Melbourne - North West,1 Bedroom Flat,330
+2024,Melbourne - North West,1 Bedroom Flat,340
+2020,Melbourne - North East,1 Bedroom Flat,280
+2021,Melbourne - North East,1 Bedroom Flat,290
+2022,Melbourne - North East,1 Bedroom Flat,300
+2023,Melbourne - North East,1 Bedroom Flat,310
+2024,Melbourne - North East,1 Bedroom Flat,320
+2020,Melbourne - Outer East,1 Bedroom Flat,260
+2021,Melbourne - Outer East,1 Bedroom Flat,270
+2022,Melbourne - Outer East,1 Bedroom Flat,280
+2023,Melbourne - Outer East,1 Bedroom Flat,290
+2024,Melbourne - Outer East,1 Bedroom Flat,300
+2020,Melbourne - South East,1 Bedroom Flat,260
+2021,Melbourne - South East,1 Bedroom Flat,270
+2022,Melbourne - South East,1 Bedroom Flat,280
+2023,Melbourne - South East,1 Bedroom Flat,290
+2024,Melbourne - South East,1 Bedroom Flat,300
+2020,Mornington Peninsula,1 Bedroom Flat,290
+2021,Mornington Peninsula,1 Bedroom Flat,300
+2022,Mornington Peninsula,1 Bedroom Flat,310
+2023,Mornington Peninsula,1 Bedroom Flat,320
+2024,Mornington Peninsula,1 Bedroom Flat,330
+2020,Melbourne - Inner South,1 Bedroom Flat,340
+2021,Melbourne - Inner South,1 Bedroom Flat,350
+2022,Melbourne - Inner South,1 Bedroom Flat,360
+2023,Melbourne - Inner South,1 Bedroom Flat,370
+2024,Melbourne - Inner South,1 Bedroom Flat,380
+2020,Melbourne - Inner,2 Bedroom Flat,480
+2021,Melbourne - Inner,2 Bedroom Flat,500
+2022,Melbourne - Inner,2 Bedroom Flat,520
+2023,Melbourne - Inner,2 Bedroom Flat,540
+2024,Melbourne - Inner,2 Bedroom Flat,560
+2020,Melbourne - Inner East,2 Bedroom Flat,410
+2021,Melbourne - Inner East,2 Bedroom Flat,430
+2022,Melbourne - Inner East,2 Bedroom Flat,450
+2023,Melbourne - Inner East,2 Bedroom Flat,470
+2024,Melbourne - Inner East,2 Bedroom Flat,490
+2020,Melbourne - West,2 Bedroom Flat,350
+2021,Melbourne - West,2 Bedroom Flat,370
+2022,Melbourne - West,2 Bedroom Flat,390
+2023,Melbourne - West,2 Bedroom Flat,410
+2024,Melbourne - West,2 Bedroom Flat,430
+2020,Melbourne - North West,2 Bedroom Flat,360
+2021,Melbourne - North West,2 Bedroom Flat,380
+2022,Melbourne - North West,2 Bedroom Flat,400
+2023,Melbourne - North West,2 Bedroom Flat,420
+2024,Melbourne - North West,2 Bedroom Flat,440
+2020,Melbourne - North East,2 Bedroom Flat,340
+2021,Melbourne - North East,2 Bedroom Flat,360
+2022,Melbourne - North East,2 Bedroom Flat,380
+2023,Melbourne - North East,2 Bedroom Flat,400
+2024,Melbourne - North East,2 Bedroom Flat,420
+2020,Melbourne - Outer East,2 Bedroom Flat,310
+2021,Melbourne - Outer East,2 Bedroom Flat,330
+2022,Melbourne - Outer East,2 Bedroom Flat,350
+2023,Melbourne - Outer East,2 Bedroom Flat,370
+2024,Melbourne - Outer East,2 Bedroom Flat,390
+2020,Melbourne - South East,2 Bedroom Flat,320
+2021,Melbourne - South East,2 Bedroom Flat,340
+2022,Melbourne - South East,2 Bedroom Flat,360
+2023,Melbourne - South East,2 Bedroom Flat,380
+2024,Melbourne - South East,2 Bedroom Flat,400
+2020,Mornington Peninsula,2 Bedroom Flat,380
+2021,Mornington Peninsula,2 Bedroom Flat,400
+2022,Mornington Peninsula,2 Bedroom Flat,420
+2023,Mornington Peninsula,2 Bedroom Flat,440
+2024,Mornington Peninsula,2 Bedroom Flat,460
+2020,Melbourne - Inner South,2 Bedroom Flat,430
+2021,Melbourne - Inner South,2 Bedroom Flat,450
+2022,Melbourne - Inner South,2 Bedroom Flat,470
+2023,Melbourne - Inner South,2 Bedroom Flat,490
+2024,Melbourne - Inner South,2 Bedroom Flat,510
+2020,Melbourne - Inner,3 Bedroom Flat,680
+2021,Melbourne - Inner,3 Bedroom Flat,710
+2022,Melbourne - Inner,3 Bedroom Flat,750
+2023,Melbourne - Inner,3 Bedroom Flat,790
+2024,Melbourne - Inner,3 Bedroom Flat,830
+2020,Melbourne - Inner East,3 Bedroom Flat,570
+2021,Melbourne - Inner East,3 Bedroom Flat,600
+2022,Melbourne - Inner East,3 Bedroom Flat,630
+2023,Melbourne - Inner East,3 Bedroom Flat,660
+2024,Melbourne - Inner East,3 Bedroom Flat,690
+2020,Melbourne - West,3 Bedroom Flat,440
+2021,Melbourne - West,3 Bedroom Flat,460
+2022,Melbourne - West,3 Bedroom Flat,480
+2023,Melbourne - West,3 Bedroom Flat,500
+2024,Melbourne - West,3 Bedroom Flat,520
+2020,Melbourne - North West,3 Bedroom Flat,450
+2021,Melbourne - North West,3 Bedroom Flat,470
+2022,Melbourne - North West,3 Bedroom Flat,490
+2023,Melbourne - North West,3 Bedroom Flat,510
+2024,Melbourne - North West,3 Bedroom Flat,530
+2020,Melbourne - North East,3 Bedroom Flat,410
+2021,Melbourne - North East,3 Bedroom Flat,430
+2022,Melbourne - North East,3 Bedroom Flat,450
+2023,Melbourne - North East,3 Bedroom Flat,470
+2024,Melbourne - North East,3 Bedroom Flat,490
+2020,Melbourne - Outer East,3 Bedroom Flat,360
+2021,Melbourne - Outer East,3 Bedroom Flat,380
+2022,Melbourne - Outer East,3 Bedroom Flat,400
+2023,Melbourne - Outer East,3 Bedroom Flat,420
+2024,Melbourne - Outer East,3 Bedroom Flat,440
+2020,Melbourne - South East,3 Bedroom Flat,370
+2021,Melbourne - South East,3 Bedroom Flat,390
+2022,Melbourne - South East,3 Bedroom Flat,410
+2023,Melbourne - South East,3 Bedroom Flat,430
+2024,Melbourne - South East,3 Bedroom Flat,450
+2020,Mornington Peninsula,3 Bedroom Flat,470
+2021,Mornington Peninsula,3 Bedroom Flat,500
+2022,Mornington Peninsula,3 Bedroom Flat,520
+2023,Mornington Peninsula,3 Bedroom Flat,540
+2024,Mornington Peninsula,3 Bedroom Flat,560
+2020,Melbourne - Inner South,3 Bedroom Flat,630
+2021,Melbourne - Inner South,3 Bedroom Flat,660
+2022,Melbourne - Inner South,3 Bedroom Flat,700
+2023,Melbourne - Inner South,3 Bedroom Flat,740
+2024,Melbourne - Inner South,3 Bedroom Flat,780
+2020,Melbourne - Inner,2 Bedroom House,520
+2021,Melbourne - Inner,2 Bedroom House,550
+2022,Melbourne - Inner,2 Bedroom House,580
+2023,Melbourne - Inner,2 Bedroom House,610
+2024,Melbourne - Inner,2 Bedroom House,640
+2020,Melbourne - Inner East,2 Bedroom House,470
+2021,Melbourne - Inner East,2 Bedroom House,490
+2022,Melbourne - Inner East,2 Bedroom House,520
+2023,Melbourne - Inner East,2 Bedroom House,550
+2024,Melbourne - Inner East,2 Bedroom House,580
+2020,Melbourne - West,2 Bedroom House,390
+2021,Melbourne - West,2 Bedroom House,410
+2022,Melbourne - West,2 Bedroom House,430
+2023,Melbourne - West,2 Bedroom House,450
+2024,Melbourne - West,2 Bedroom House,470
+2020,Melbourne - North West,2 Bedroom House,400
+2021,Melbourne - North West,2 Bedroom House,420
+2022,Melbourne - North West,2 Bedroom House,450
+2023,Melbourne - North West,2 Bedroom House,480
+2024,Melbourne - North West,2 Bedroom House,510
+2020,Melbourne - North East,2 Bedroom House,380
+2021,Melbourne - North East,2 Bedroom House,400
+2022,Melbourne - North East,2 Bedroom House,420
+2023,Melbourne - North East,2 Bedroom House,440
+2024,Melbourne - North East,2 Bedroom House,460
+2020,Melbourne - Outer East,2 Bedroom House,360
+2021,Melbourne - Outer East,2 Bedroom House,380
+2022,Melbourne - Outer East,2 Bedroom House,400
+2023,Melbourne - Outer East,2 Bedroom House,420
+2024,Melbourne - Outer East,2 Bedroom House,440
+2020,Melbourne - South East,2 Bedroom House,360
+2021,Melbourne - South East,2 Bedroom House,380
+2022,Melbourne - South East,2 Bedroom House,400
+2023,Melbourne - South East,2 Bedroom House,420
+2024,Melbourne - South East,2 Bedroom House,440
+2020,Mornington Peninsula,2 Bedroom House,390
+2021,Mornington Peninsula,2 Bedroom House,410
+2022,Mornington Peninsula,2 Bedroom House,430
+2023,Mornington Peninsula,2 Bedroom House,450
+2024,Mornington Peninsula,2 Bedroom House,470
+2020,Melbourne - Inner South,2 Bedroom House,450
+2021,Melbourne - Inner South,2 Bedroom House,470
+2022,Melbourne - Inner South,2 Bedroom House,500
+2023,Melbourne - Inner South,2 Bedroom House,530
+2024,Melbourne - Inner South,2 Bedroom House,560
+2020,Melbourne - Inner,3 Bedroom House,680
+2021,Melbourne - Inner,3 Bedroom House,710
+2022,Melbourne - Inner,3 Bedroom House,750
+2023,Melbourne - Inner,3 Bedroom House,790
+2024,Melbourne - Inner,3 Bedroom House,830
+2020,Melbourne - Inner East,3 Bedroom House,590
+2021,Melbourne - Inner East,3 Bedroom House,620
+2022,Melbourne - Inner East,3 Bedroom House,650
+2023,Melbourne - Inner East,3 Bedroom House,680
+2024,Melbourne - Inner East,3 Bedroom House,710
+2020,Melbourne - West,3 Bedroom House,450
+2021,Melbourne - West,3 Bedroom House,480
+2022,Melbourne - West,3 Bedroom House,500
+2023,Melbourne - West,3 Bedroom House,530
+2024,Melbourne - West,3 Bedroom House,560
+2020,Melbourne - North West,3 Bedroom House,460
+2021,Melbourne - North West,3 Bedroom House,490
+2022,Melbourne - North West,3 Bedroom House,510
+2023,Melbourne - North West,3 Bedroom House,540
+2024,Melbourne - North West,3 Bedroom House,570
+2020,Melbourne - North East,3 Bedroom House,430
+2021,Melbourne - North East,3 Bedroom House,450
+2022,Melbourne - North East,3 Bedroom House,470
+2023,Melbourne - North East,3 Bedroom House,490
+2024,Melbourne - North East,3 Bedroom House,510
+2020,Melbourne - Outer East,3 Bedroom House,400
+2021,Melbourne - Outer East,3 Bedroom House,420
+2022,Melbourne - Outer East,3 Bedroom House,440
+2023,Melbourne - Outer East,3 Bedroom House,460
+2024,Melbourne - Outer East,3 Bedroom House,480
+2020,Melbourne - South East,3 Bedroom House,400
+2021,Melbourne - South East,3 Bedroom House,420
+2022,Melbourne - South East,3 Bedroom House,440
+2023,Melbourne - South East,3 Bedroom House,460
+2024,Melbourne - South East,3 Bedroom House,480
+2020,Mornington Peninsula,3 Bedroom House,430
+2021,Mornington Peninsula,3 Bedroom House,450
+2022,Mornington Peninsula,3 Bedroom House,470
+2023,Mornington Peninsula,3 Bedroom House,490
+2024,Mornington Peninsula,3 Bedroom House,510
+2020,Melbourne - Inner South,3 Bedroom House,560
+2021,Melbourne - Inner South,3 Bedroom House,590
+2022,Melbourne - Inner South,3 Bedroom House,620
+2023,Melbourne - Inner South,3 Bedroom House,650
+2024,Melbourne - Inner South,3 Bedroom House,680
+2020,Melbourne - Inner,4 Bedroom House,800
+2021,Melbourne - Inner,4 Bedroom House,840
+2022,Melbourne - Inner,4 Bedroom House,890
+2023,Melbourne - Inner,4 Bedroom House,940
+2024,Melbourne - Inner,4 Bedroom House,990
+2020,Melbourne - Inner East,4 Bedroom House,710
+2021,Melbourne - Inner East,4 Bedroom House,740
+2022,Melbourne - Inner East,4 Bedroom House,780
+2023,Melbourne - Inner East,4 Bedroom House,820
+2024,Melbourne - Inner East,4 Bedroom House,860
+2020,Melbourne - West,4 Bedroom House,570
+2021,Melbourne - West,4 Bedroom House,600
+2022,Melbourne - West,4 Bedroom House,630
+2023,Melbourne - West,4 Bedroom House,660
+2024,Melbourne - West,4 Bedroom House,690
+2020,Melbourne - North West,4 Bedroom House,580
+2021,Melbourne - North West,4 Bedroom House,610
+2022,Melbourne - North West,4 Bedroom House,640
+2023,Melbourne - North West,4 Bedroom House,670
+2024,Melbourne - North West,4 Bedroom House,700
+2020,Melbourne - North East,4 Bedroom House,520
+2021,Melbourne - North East,4 Bedroom House,550
+2022,Melbourne - North East,4 Bedroom House,580
+2023,Melbourne - North East,4 Bedroom House,610
+2024,Melbourne - North East,4 Bedroom House,640
+2020,Melbourne - Outer East,4 Bedroom House,480
+2021,Melbourne - Outer East,4 Bedroom House,510
+2022,Melbourne - Outer East,4 Bedroom House,540
+2023,Melbourne - Outer East,4 Bedroom House,570
+2024,Melbourne - Outer East,4 Bedroom House,600
+2020,Melbourne - South East,4 Bedroom House,480
+2021,Melbourne - South East,4 Bedroom House,510
+2022,Melbourne - South East,4 Bedroom House,540
+2023,Melbourne - South East,4 Bedroom House,570
+2024,Melbourne - South East,4 Bedroom House,600
+2020,Mornington Peninsula,4 Bedroom House,510
+2021,Mornington Peninsula,4 Bedroom House,540
+2022,Mornington Peninsula,4 Bedroom House,570
+2023,Mornington Peninsula,4 Bedroom House,600
+2024,Mornington Peninsula,4 Bedroom House,630
+2020,Melbourne - Inner South,4 Bedroom House,680
+2021,Melbourne - Inner South,4 Bedroom House,710
+2022,Melbourne - Inner South,4 Bedroom House,750
+2023,Melbourne - Inner South,4 Bedroom House,790
+2024,Melbourne - Inner South,4 Bedroom House,830

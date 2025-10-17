@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "House Prices in Abbotsford",
+  "width": 600,
+  "height": 600,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "melbourne_areas.json",
+        "format": {"type": "topojson", "feature": "SA4_2021_AUST_GDA94"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {"url": "houses.csv"},
+      "mark": {"type": "circle"},
+      "encoding": {
+        "longitude": {"field": "Longtitude", "type": "quantitative"},
+        "latitude": {"field": "Lattitude", "type": "quantitative"},
+        "color": {
+          "field": "Price",
+          "type": "quantitative",
+          "scale": {"scheme": "reds"},
+          "title": "Price ($)"
+        },
+        "size": {"value": 60},
+        "tooltip": [
+          {"field": "Suburb", "type": "nominal"},
+          {"field": "Price", "type": "quantitative"}
+        ]
+      }
+    }
+  ]
+}

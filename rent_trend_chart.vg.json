@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Melbourne Rent Trends by Area (2015–2025)",
+  "width": 700,
+  "height": 400,
+
+  "data": {"url": "rent_trends.csv"},
+
+  "params": [
+    {
+      "name": "selected_area",
+      "value": "Melbourne - Inner",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Melbourne - Inner",
+          "Melbourne - Inner East",
+          "Melbourne - West",
+          "Melbourne - North West",
+          "Melbourne - North East",
+          "Melbourne - Outer East",
+          "Melbourne - South East",
+          "Mornington Peninsula",
+          "Melbourne - Inner South"
+        ],
+        "labels": [
+          "Melbourne - Inner",
+          "Melbourne - Inner East",
+          "Melbourne - West",
+          "Melbourne - North West",
+          "Melbourne - North East",
+          "Melbourne - Outer East",
+          "Melbourne - South East",
+          "Mornington Peninsula",
+          "Melbourne - Inner South"
+        ],
+        "name": "Select Area:"
+      }
+    }
+  ],
+
+  "transform": [
+    {"filter": "datum.Area == selected_area"}
+  ],
+
+  "mark": {"type": "line", "point": true},
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "field": "Median Rent",
+      "type": "quantitative",
+      "title": "Median Rent ($)"
+    },
+    "color": {
+      "field": "Apartment Type",
+      "type": "nominal",
+      "title": "Apartment Type"
+    },
+    "tooltip": [
+      {"field": "Area", "type": "nominal"},
+      {"field": "Apartment Type", "type": "nominal"},
+      {"field": "Year", "type": "temporal"},
+      {"field": "Median Rent", "type": "quantitative"}
+    ]
+  }
+}

@@ -1,10 +1,10 @@
-Area,Median Rent
-Melbourne - Inner,520
-Melbourne - Inner East,460
-Melbourne - West,400
-Melbourne - North West,440
-Melbourne - North East,410
-Melbourne - Outer East,380
-Melbourne - South East,360
-Mornington Peninsula,350
-Melbourne - Inner South,430
+Area,1 Bedroom Flat,2 Bedroom Flat,3 Bedroom Flat,2 Bedroom House,3 Bedroom House,4 Bedroom House
+Melbourne - Inner,390,520,750,580,750,890
+Melbourne - Inner East,350,450,630,520,650,780
+Melbourne - West,300,390,480,430,500,630
+Melbourne - North West,320,400,490,450,510,640
+Melbourne - North East,300,380,450,420,470,580
+Melbourne - Outer East,280,350,400,400,440,540
+Melbourne - South East,280,360,410,400,440,540
+Mornington Peninsula,310,420,520,430,470,570
+Melbourne - Inner South,360,470,700,500,620,750

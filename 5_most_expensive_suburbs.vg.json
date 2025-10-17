@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Annualized Rent and Income by Suburb",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {"Suburb":"Docklands", "Rent":580, "Income":62393},
+      {"Suburb":"CBD-St Kilda Rd", "Rent":550, "Income":43738},
+      {"Suburb":"Southbank", "Rent":550, "Income":61101},
+      {"Suburb":"Port Melbourne", "Rent":540, "Income":83408},
+      {"Suburb":"Glen Waverley-Mulgrave", "Rent":540, "Income":53482}
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "datum.Rent * 12",
+      "as": "Rent"
+    },
+    {
+      "fold": ["Rent", "Income"],
+      "as": ["Category", "Value"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Suburb", "type": "nominal", "title": "Suburb"},
+    "y": {"field": "Value", "type": "quantitative", "title": "Amount ($)"},
+    "color": {"field": "Category", "type": "nominal", "title": "Type"},
+    "tooltip": [
+      {"field": "Suburb", "type": "nominal"},
+      {"field": "Category", "type": "nominal"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  }
+}

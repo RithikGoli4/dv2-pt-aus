@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Median Incomes by Area in Melbourne",
+  "width": 650,
+  "height": 650,
+
+  "data": {
+    "url": "melbourne_areas.json",
+    "format": {"type": "topojson", "feature": "SA4_2021_AUST_GDA94"}
+  },
+
+  "projection": {"type": "mercator"},
+
+  "layer": [
+    {
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.SA4_NAME21",
+          "from": {
+            "data": {"url": "income_medians.csv"},
+            "key": "Area",
+            "fields": ["Income"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "Income",
+          "type": "quantitative",
+          "scale": {"scheme": "greens"},
+          "title": "Median Income ($)"
+        },
+        "tooltip": [
+          {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"},
+          {"field": "Income", "type": "quantitative", "title": "Median Income ($)"}
+        ]
+      }
+    }
+  ]
+}
