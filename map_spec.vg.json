@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Melbourne Median Rent For 1 Bedroom Apartment",
+  "width": 600,
+  "height": 600,
+
+  "data": {
+    "url": "melbourne_areas.json",
+    "format": {"type": "topojson", "feature": "SA4_2021_AUST_GDA94"}
+  },
+
+  "projection": {"type": "mercator"},
+
+  "layer": [
+    {
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.SA4_NAME21",
+          "from": {
+            "data": {"url": "rent_medians.csv"},
+            "key": "Area",
+            "fields": ["Median Rent"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "Median Rent",
+          "type": "quantitative",
+          "scale": {"scheme": "blues"},
+          "title": "Median Rent ($)"
+        },
+        "tooltip": [
+          {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"},
+          {"field": "Median Rent", "type": "quantitative", "title": "Median Rent ($)"}
+        ]
+      }
+    }
+  ]
+}

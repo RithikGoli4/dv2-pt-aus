@@ -1,0 +1,69 @@
+/* Global Reset and Font */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+h1 {
+    font-size: 2em;
+    color: #004d40; /* Dark Teal */
+    margin-bottom: 5px;
+}
+
+/* Map Container Styling */
+#map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* SVG Map Feature Styles */
+.area-feature {
+    /* White stroke for visibility between areas */
+    stroke: #fff; 
+    stroke-width: 0.5px;
+    transition: fill-opacity 0.2s ease; /* Smooth transition for hover */
+    cursor: pointer;
+}
+
+/* Default color for areas with no data */
+.area-feature[fill="#ccc"] {
+    fill: #e0e0e0;
+}
+
+.area-feature:hover {
+    fill-opacity: 0.9;
+}
+
+/* Tooltip Text (Temporary SVG text) */
+.tooltip-text {
+    font-size: 14px;
+    fill: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 4px;
+    pointer-events: none; /* Crucial for map interaction */
+    font-weight: bold;
+}
+
+/* Error Text */
+.error-text {
+    font-size: 1.5em;
+    fill: #d9534f;
+    text-anchor: middle;
+}

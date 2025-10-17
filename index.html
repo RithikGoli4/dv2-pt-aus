@@ -3,91 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 TopoJSON Map (USA States)</title>
-    <style>
-        /* Define the size and style for the map container */
-        #map-container {
-            width: 800px;
-            height: 500px;
-            margin: 20px auto;
-            border: 1px solid #ccc;
-        }
+    <title>Melbourne Rental Price Map</title>
+    
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
-        /* Style for the map features (states/provinces) */
-        .feature {
-            fill: #0074D9; /* Blue fill color */
-            stroke: #333; /* Dark border color */
-            stroke-width: 0.5px;
-            fill-opacity: 0.7;
+    <!-- Load Vega-Lite Visualization Libraries (required for rendering the map) -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <style>
+        /* Basic styling for the page structure */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
-        /* Highlight on hover (uses the default <title> tooltip) */
-        .feature:hover {
-            fill-opacity: 1.0;
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 1.8rem;
+            color: #1f3a5f;
+        }
+        #vis {
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
     </style>
 </head>
 <body>
-
-    <div id="map-container"></div>
-
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+    <header>
+        <h1>Melbourne Median Rent by Region</h1>
+        <p>Visualization of rental prices using Vega-Lite.</p>
+    </header>
+    
+    <!-- This is the container where the map will be rendered -->
+    <div id="vis"></div>
 
     <script>
-        // === CONFIGURATION ===
-        const topojsonPath = 'data/america.json'; 
-        const objectName = "ne_110m_admin_1_states_provinces"; // <-- The specific name you found
+        // The Vega-Lite Specification (copied from map_spec.json)
+        const vegaLiteSpec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": "Melbourne Median Rent by Region",
+            "width": 800,
+            "height": 600,
+            "projection": {"type": "mercator"},
+            "layer": [
+                {
+                    "data": {
+                        "url": "js/melbourne_areas.js", // Links to your geographic data file
+                        "format": {"type": "json"}
+                    },
+                    "transform": [
+                        {
+                            "lookup": "properties.SA4_NAME21", // GeoJSON key
+                            "from": {
+                                "data": {"url": "data/rent_medians.csv"}, // Links to your CSV data file
+                                "key": "Area",                              // CSV join key
+                                "fields": [" Median Rent"]                  // CSV value field
+                            }
+                        }
+                    ],
+                    "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.5},
+                    "encoding": {
+                        "color": {
+                            "field": " Median Rent",
+                            "type": "quantitative",
+                            "title": "Median Rent (A$)",
+                            "scale": {
+                                "domain": [300, 550],
+                                "range": ["#ffffcc", "#e31a1c"]
+                            }
+                        },
+                        "tooltip": [
+                            {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Region"},
+                            {"field": " Median Rent", "type": "quantitative", "title": "Median Rent", "format": "$,.0f"}
+                        ],
+                        "opacity": {
+                            "condition": {"field": " Median Rent", "type": "quantitative", "value": 1},
+                            "value": 0.3
+                        }
+                    }
+                }
+            ]
+        };
 
-        // === SETUP SVG CONTAINER AND PROJECTION ===
-        const width = 800;
-        const height = 500;
-
-        // 1. Create the SVG container for the map
-        const svg = d3.select("#map-container")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        // 2. Define the geographic projection (Albers is good for continental US)
-        const projection = d3.geoAlbersUsa()
-            .scale(1000) 
-            .translate([width / 2, height / 2]);
-
-        // 3. Create a path generator
-        const path = d3.geoPath()
-            .projection(projection);
-
-        // === DATA LOADING AND RENDERING ===
-        d3.json(topojsonPath)
-            .then(topojsonData => {
-                
-                // 4. Convert the specific TopoJSON object to GeoJSON format
-                const geojsonData = topojson.feature(topojsonData, topojsonData.objects[objectName]);
-                
-                // 5. Draw the map features using SVG paths
-                svg.selectAll(".feature")
-                    .data(geojsonData.features)
-                    .enter().append("path")
-                    .attr("class", "feature")
-                    // Apply the projection to the feature data to get the SVG 'd' path string
-                    .attr("d", path)
-                    // Add a tooltip using the 'name_en' property
-                    .append("title")
-                    .text(d => d.properties.name_en || d.properties.name || "Unnamed Region"); 
-                    
+        // Render the visualization using Vega-Embed
+        vegaEmbed("#vis", vegaLiteSpec, {actions: true})
+            .then(result => {
+                console.log("Vega-Lite map rendered successfully!");
             })
             .catch(error => {
-                console.error('Error loading or processing TopoJSON file:', error);
-                // Display an error message if the file cannot be loaded
-                svg.append("text")
-                    .attr("x", width / 2)
-                    .attr("y", height / 2)
-                    .attr("text-anchor", "middle")
-                    .attr("fill", "red")
-                    .text("ERROR: Could not load or process map data. Check the console (F12).");
+                console.error("Error rendering Vega-Lite visualization:", error);
+                const visContainer = document.getElementById('vis');
+                if (visContainer) {
+                    visContainer.innerHTML = '<h1>Map Loading Error</h1><p>Check the browser console (F12) for details. Ensure your local web server is running and data paths are correct.</p>';
+                }
             });
     </script>
-
 </body>
 </html>
