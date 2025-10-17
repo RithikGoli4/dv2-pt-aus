@@ -1,16 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Melbourne Rent Map</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://unpkg.com/topojson-client@3"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 TopoJSON Map (USA States)</title>
+    <style>
+        /* Define the size and style for the map container */
+        #map-container {
+            width: 800px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Style for the map features (states/provinces) */
+        .feature {
+            fill: #0074D9; /* Blue fill color */
+            stroke: #333; /* Dark border color */
+            stroke-width: 0.5px;
+            fill-opacity: 0.7;
+        }
+        
+        /* Highlight on hover (uses the default <title> tooltip) */
+        .feature:hover {
+            fill-opacity: 1.0;
+        }
+    </style>
 </head>
 <body>
-  <h1>Melbourne Rent Map</h1>
-  <div id="map"></div>
 
-  <script src="js/map.js"></script>
+    <div id="map-container"></div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+
+    <script>
+        // === CONFIGURATION ===
+        const topojsonPath = 'data/america.json'; 
+        const objectName = "ne_110m_admin_1_states_provinces"; // <-- The specific name you found
+
+        // === SETUP SVG CONTAINER AND PROJECTION ===
+        const width = 800;
+        const height = 500;
+
+        // 1. Create the SVG container for the map
+        const svg = d3.select("#map-container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // 2. Define the geographic projection (Albers is good for continental US)
+        const projection = d3.geoAlbersUsa()
+            .scale(1000) 
+            .translate([width / 2, height / 2]);
+
+        // 3. Create a path generator
+        const path = d3.geoPath()
+            .projection(projection);
+
+        // === DATA LOADING AND RENDERING ===
+        d3.json(topojsonPath)
+            .then(topojsonData => {
+                
+                // 4. Convert the specific TopoJSON object to GeoJSON format
+                const geojsonData = topojson.feature(topojsonData, topojsonData.objects[objectName]);
+                
+                // 5. Draw the map features using SVG paths
+                svg.selectAll(".feature")
+                    .data(geojsonData.features)
+                    .enter().append("path")
+                    .attr("class", "feature")
+                    // Apply the projection to the feature data to get the SVG 'd' path string
+                    .attr("d", path)
+                    // Add a tooltip using the 'name_en' property
+                    .append("title")
+                    .text(d => d.properties.name_en || d.properties.name || "Unnamed Region"); 
+                    
+            })
+            .catch(error => {
+                console.error('Error loading or processing TopoJSON file:', error);
+                // Display an error message if the file cannot be loaded
+                svg.append("text")
+                    .attr("x", width / 2)
+                    .attr("y", height / 2)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "red")
+                    .text("ERROR: Could not load or process map data. Check the console (F12).");
+            });
+    </script>
+
 </body>
 </html>
