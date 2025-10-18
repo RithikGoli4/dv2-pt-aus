@@ -2,111 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Melbourne Housing & Income Visualisations</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Housing Affordability in Melbourne</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
     body {
-      font-family: "Inter", sans-serif;
-      background: #f9fafb;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
+      padding: 0;
       color: #222;
-      margin-bottom: 40px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 30px;
-      justify-items: center;
-    }
-    .chart-container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 100%;
-    }
-    .chart-title {
+
+    header {
       text-align: center;
-      font-size: 1.1rem;
+      padding: 60px 20px 20px;
+      background: linear-gradient(120deg, #0077b6, #00b4d8);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #e0f7ff;
+    }
+
+    .section {
+      max-width: 1300px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      font-size: 1.05em;
+      color: #444;
+    }
+
+    .chart-row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 40px;
+      flex-wrap: nowrap;
+    }
+
+    .chart {
+      flex: 1 1 50%;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      min-height: 550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chart h2 {
+      text-align: center;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #333;
+    }
+
+    @media (max-width: 1000px) {
+      .chart-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Melbourne Housing and Income Analysis</h1>
-  
-  <div class="grid">
-    <div class="chart-container">
-      <div class="chart-title">5 Cheapest Suburbs</div>
-      <div id="chart1"></div>
+  <header>
+    <h1>Housing Affordability in Melbourne</h1>
+    <p>Exploring how rent prices and incomes vary across Melbourne’s suburbs</p>
+  </header>
+
+  <section class="section">
+    <div class="intro">
+      <p>
+        Melbourne’s housing market reflects a complex balance between income levels and living costs across its suburbs. 
+        While some areas boast higher wages that align with rising rents, others reveal a growing affordability gap. 
+        The following visualisations present a side-by-side comparison of <strong>median rent</strong> and <strong>average income</strong> by area, 
+        highlighting how affordability varies throughout the city’s diverse neighbourhoods.
+      </p>
     </div>
 
-    <div class="chart-container">
-      <div class="chart-title">5 Most Expensive Suburbs</div>
-      <div id="chart2"></div>
+    <div class="chart-row">
+      <div class="chart">
+        <h2>Median Rent by Area</h2>
+        <div id="rent_map"></div>
+      </div>
+      <div class="chart">
+        <h2>Average Income by Area</h2>
+        <div id="income_map"></div>
+      </div>
     </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Price vs Distance from CBD</div>
-      <div id="chart3"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Highest Rent and Income</div>
-      <div id="chart4"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Income by Area</div>
-      <div id="chart5"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Lowest Rent and Income</div>
-      <div id="chart6"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Rent by Area</div>
-      <div id="chart7"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Rent Trend Over Time</div>
-      <div id="chart8"></div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-title">Price by Distance Map</div>
-      <div id="chart9"></div>
-    </div>
-  </div>
+  </section>
 
   <script>
-    const charts = [
-      { id: "chart1", file: "5_cheapest_suburbs.vg.json" },
-      { id: "chart2", file: "5_most_expensive_suburbs.vg.json" },
-      { id: "chart3", file: "distance_vs_price_scatter.vg.json" },
-      { id: "chart4", file: "highest_rent_and_income.vg.json" },
-      { id: "chart5", file: "income_by_area.vg.json" },
-      { id: "chart6", file: "lowest_rent_and_income.vg.json" },
-      { id: "chart7", file: "rent_by_area.vg.json" },
-      { id: "chart8", file: "rent_trend_chart.vg.json" },
-      { id: "chart9", file: "price_by_distance_map.vg.json" }
-    ];
-
-    charts.forEach(({ id, file }) => {
-      vegaEmbed(`#${id}`, file, { actions: false }).catch(console.error);
-    });
+    vegaEmbed("#rent_map", "rent_by_area.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#income_map", "income_by_area.vg.json", { actions: false, renderer: "canvas" });
   </script>
 </body>
 </html>

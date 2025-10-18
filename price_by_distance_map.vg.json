@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "House Prices in Abbotsford",
+  "title": "House Prices in Melbourne",
   "width": 600,
   "height": 600,
   "projection": {"type": "mercator"},

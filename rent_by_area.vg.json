@@ -63,6 +63,10 @@
         {
           "calculate": "datum[typeSelector]",
           "as": "Median Rent"
+        },
+        {
+          "calculate": "typeSelector",
+          "as": "Selected Type"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
@@ -70,13 +74,13 @@
         "color": {
           "field": "Median Rent",
           "type": "quantitative",
-          "scale": {"scheme": "blues"},
+          "scale": {"scheme": "reds"},
           "title": "Median Rent ($)"
         },
         "tooltip": [
           {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Area"},
           {"field": "Median Rent", "type": "quantitative", "title": "Median Rent ($)"},
-          {"field": "typeSelector", "type": "nominal", "title": "Type"}
+          {"field": "Selected Type", "type": "nominal", "title": "Type"}
         ]
       }
     }
