@@ -1,121 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melbourne Rental Price Map</title>
-    
-    <!-- Link to your custom stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Load Vega-Lite Visualization Libraries (required for rendering the map) -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    <style>
-        /* Basic styling for the page structure */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        header {
-            background-color: #fff;
-            padding: 20px 0;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            margin: 0 0 5px 0;
-            font-size: 1.8rem;
-            color: #1f3a5f;
-        }
-        #vis {
-            margin: 30px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Melbourne Housing & Income Visualisations</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+    .chart-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 100%;
+    }
+    .chart-title {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Melbourne Median Rent by Region</h1>
-        <p>Visualization of rental prices using Vega-Lite.</p>
-    </header>
-    
-    <!-- This is the container where the map will be rendered -->
-    <div id="vis"></div>
+  <h1>Melbourne Housing and Income Analysis</h1>
+  
+  <div class="grid">
+    <div class="chart-container">
+      <div class="chart-title">5 Cheapest Suburbs</div>
+      <div id="chart1"></div>
+    </div>
 
-    <script>
-        // The Vega-Lite Specification (copied from map_spec.json)
-        const vegaLiteSpec = {
-            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "title": "Melbourne Median Rent by Region",
-            "width": 800,
-            "height": 600,
-            "projection": {"type": "mercator"},
-            "layer": [
-                {
-                    "data": {
-                        "url": "js/melbourne_areas.js", // Links to your geographic data file
-                        "format": {"type": "json"}
-                    },
-                    "transform": [
-                        {
-                            "lookup": "properties.SA4_NAME21", // GeoJSON key
-                            "from": {
-                                "data": {"url": "data/rent_medians.csv"}, // Links to your CSV data file
-                                "key": "Area",                              // CSV join key
-                                "fields": [" Median Rent"]                  // CSV value field
-                            }
-                        }
-                    ],
-                    "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.5},
-                    "encoding": {
-                        "color": {
-                            "field": " Median Rent",
-                            "type": "quantitative",
-                            "title": "Median Rent (A$)",
-                            "scale": {
-                                "domain": [300, 550],
-                                "range": ["#ffffcc", "#e31a1c"]
-                            }
-                        },
-                        "tooltip": [
-                            {"field": "properties.SA4_NAME21", "type": "nominal", "title": "Region"},
-                            {"field": " Median Rent", "type": "quantitative", "title": "Median Rent", "format": "$,.0f"}
-                        ],
-                        "opacity": {
-                            "condition": {"field": " Median Rent", "type": "quantitative", "value": 1},
-                            "value": 0.3
-                        }
-                    }
-                }
-            ]
-        };
+    <div class="chart-container">
+      <div class="chart-title">5 Most Expensive Suburbs</div>
+      <div id="chart2"></div>
+    </div>
 
-        // Render the visualization using Vega-Embed
-        vegaEmbed("#vis", vegaLiteSpec, {actions: true})
-            .then(result => {
-                console.log("Vega-Lite map rendered successfully!");
-            })
-            .catch(error => {
-                console.error("Error rendering Vega-Lite visualization:", error);
-                const visContainer = document.getElementById('vis');
-                if (visContainer) {
-                    visContainer.innerHTML = '<h1>Map Loading Error</h1><p>Check the browser console (F12) for details. Ensure your local web server is running and data paths are correct.</p>';
-                }
-            });
-    </script>
+    <div class="chart-container">
+      <div class="chart-title">Price vs Distance from CBD</div>
+      <div id="chart3"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Highest Rent and Income</div>
+      <div id="chart4"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Income by Area</div>
+      <div id="chart5"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Lowest Rent and Income</div>
+      <div id="chart6"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Rent by Area</div>
+      <div id="chart7"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Rent Trend Over Time</div>
+      <div id="chart8"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Price by Distance Map</div>
+      <div id="chart9"></div>
+    </div>
+  </div>
+
+  <script>
+    const charts = [
+      { id: "chart1", file: "5_cheapest_suburbs.vg.json" },
+      { id: "chart2", file: "5_most_expensive_suburbs.vg.json" },
+      { id: "chart3", file: "distance_vs_price_scatter.vg.json" },
+      { id: "chart4", file: "highest_rent_and_income.vg.json" },
+      { id: "chart5", file: "income_by_area.vg.json" },
+      { id: "chart6", file: "lowest_rent_and_income.vg.json" },
+      { id: "chart7", file: "rent_by_area.vg.json" },
+      { id: "chart8", file: "rent_trend_chart.vg.json" },
+      { id: "chart9", file: "price_by_distance_map.vg.json" }
+    ];
+
+    charts.forEach(({ id, file }) => {
+      vegaEmbed(`#${id}`, file, { actions: false }).catch(console.error);
+    });
+  </script>
 </body>
 </html>
