@@ -1,69 +1,123 @@
-/* Global Reset and Font */
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
 }
 
 header {
-    text-align: center;
-    padding: 20px;
-    background-color: #fff;
-    border-bottom: 2px solid #ddd;
+  text-align: center;
+  padding: 60px 20px 20px;
+  background: linear-gradient(120deg, #0077b6, #00b4d8);
+  color: white;
 }
 
-h1 {
-    font-size: 2em;
-    color: #004d40; /* Dark Teal */
-    margin-bottom: 5px;
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 700;
 }
 
-/* Map Container Styling */
-#map-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
+header p {
+  font-size: 1.1em;
+  margin-top: 10px;
+  color: #e0f7ff;
 }
 
-/* SVG Map Feature Styles */
-.area-feature {
-    /* White stroke for visibility between areas */
-    stroke: #fff; 
-    stroke-width: 0.5px;
-    transition: fill-opacity 0.2s ease; /* Smooth transition for hover */
-    cursor: pointer;
+.section {
+  max-width: 1300px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-/* Default color for areas with no data */
-.area-feature[fill="#ccc"] {
-    fill: #e0e0e0;
+.intro {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  font-size: 1.05em;
+  color: #444;
 }
 
-.area-feature:hover {
-    fill-opacity: 0.9;
+.chart-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
-/* Tooltip Text (Temporary SVG text) */
-.tooltip-text {
-    font-size: 14px;
-    fill: #333;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 5px;
-    border-radius: 4px;
-    pointer-events: none; /* Crucial for map interaction */
-    font-weight: bold;
+.chart {
+  flex: 1 1 45%;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* Error Text */
-.error-text {
-    font-size: 1.5em;
-    fill: #d9534f;
-    text-anchor: middle;
+.chart h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.chart-notes {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
+  padding-left: 20px;
+}
+
+.chart-notes ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.chart-notes li {
+  margin-bottom: 8px;
+}
+
+/* Trend chart + notes side by side */
+.trend-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.trend-chart {
+  flex: 2 1 65%;
+  min-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.trend-notes {
+  flex: 1 1 30%;
+  min-width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 1000px) {
+  .chart-row,
+  .trend-container {
+    flex-direction: column;
+  }
+  .chart, .trend-chart, .trend-notes {
+    flex: 1 1 100%;
+  }
 }

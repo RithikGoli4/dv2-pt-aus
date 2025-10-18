@@ -54,11 +54,12 @@
       justify-content: center;
       align-items: stretch;
       gap: 40px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
     }
 
     .chart {
-      flex: 1 1 50%;
+      flex: 1 1 45%;
       background: white;
       padding: 20px;
       border-radius: 20px;
@@ -66,7 +67,7 @@
       min-height: 550px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
 
     .chart h2 {
@@ -76,9 +77,58 @@
       color: #333;
     }
 
+    .chart-notes {
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.5;
+      padding-left: 20px;
+    }
+
+    .chart-notes ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .chart-notes li {
+      margin-bottom: 8px;
+    }
+
+    /* Trend chart + notes side by side */
+    .trend-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .trend-chart {
+      flex: 2 1 65%;
+      min-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .trend-notes {
+      flex: 1 1 30%;
+      min-width: 250px;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
     @media (max-width: 1000px) {
-      .chart-row {
+      .chart-row,
+      .trend-container {
         flex-direction: column;
+      }
+      .chart, .trend-chart, .trend-notes {
+        flex: 1 1 100%;
       }
     }
   </style>
@@ -95,10 +145,11 @@
         Melbourne’s housing market reflects a complex balance between income levels and living costs across its suburbs. 
         While some areas boast higher wages that align with rising rents, others reveal a growing affordability gap. 
         The following visualisations present a side-by-side comparison of <strong>median rent</strong> and <strong>average income</strong> by area, 
-        highlighting how affordability varies throughout the city’s diverse neighbourhoods.
+        along with rent trends over time, suburb extremes, and how prices relate to distance from the CBD.
       </p>
     </div>
 
+    <!-- First row: Rent and Income Maps side by side -->
     <div class="chart-row">
       <div class="chart">
         <h2>Median Rent by Area</h2>
@@ -109,11 +160,74 @@
         <div id="income_map"></div>
       </div>
     </div>
+
+    <!-- Second row: Rent Trend chart + notes side by side -->
+    <div class="trend-container">
+      <div class="trend-chart">
+        <h2>Median Rent Trend Over Time</h2>
+        <div id="rent_trend"></div>
+      </div>
+      <div class="trend-notes">
+        <h2>Key Insights</h2>
+        <div class="chart-notes">
+          <ul>
+            <li>Median rent in Melbourne has steadily increased over the past 5 years.</li>
+            <li>Inner-city areas show higher rent growth compared to outer suburbs.</li>
+            <li>Rental affordability is becoming more challenging for low to mid-income households.</li>
+            <li>Seasonal variations are noticeable, with rents peaking around summer months.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Third row: Cheapest vs Most Expensive Suburbs -->
+    <div class="intro">
+      <p>
+        To understand Melbourne's housing extremes, we compare the <strong>five cheapest</strong> and <strong>five most expensive suburbs</strong> in terms of median rent. 
+        These visualisations highlight the wide variation in rental costs across the city.
+      </p>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart">
+        <h2>5 Cheapest Suburbs</h2>
+        <div id="cheapest_suburbs"></div>
+      </div>
+      <div class="chart">
+        <h2>5 Most Expensive Suburbs</h2>
+        <div id="expensive_suburbs"></div>
+      </div>
+    </div>
+
+    <!-- Fourth row: Price by Distance -->
+    <div class="intro">
+      <p>
+        Distance from Melbourne’s CBD is a key factor influencing rental prices. 
+        The following visualisations show how median rent changes across areas relative to distance from the city center, 
+        highlighting trends and variations in suburban affordability.
+      </p>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart">
+        <h2>Price by Distance Map</h2>
+        <div id="price_distance_map"></div>
+      </div>
+      <div class="chart">
+        <h2>Distance vs Rent Scatter Plot</h2>
+        <div id="distance_price_scatter"></div>
+      </div>
+    </div>
   </section>
 
   <script>
     vegaEmbed("#rent_map", "rent_by_area.vg.json", { actions: false, renderer: "canvas" });
     vegaEmbed("#income_map", "income_by_area.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#rent_trend", "rent_trend_chart.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#cheapest_suburbs", "5_cheapest_suburbs.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#expensive_suburbs", "5_most_expensive_suburbs.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#price_distance_map", "price_by_distance_map.vg.json", { actions: false, renderer: "canvas" });
+    vegaEmbed("#distance_price_scatter", "distance_vs_price_scatter.vg.json", { actions: false, renderer: "canvas" });
   </script>
 </body>
 </html>

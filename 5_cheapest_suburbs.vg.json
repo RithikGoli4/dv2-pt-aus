@@ -25,7 +25,12 @@
   "mark": "bar",
   "encoding": {
     "x": {"field": "Suburb", "type": "nominal", "title": "Suburb"},
-    "y": {"field": "Value", "type": "quantitative", "title": "Amount ($)"},
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Amount ($)",
+      "scale": {"domain": [0, 90000]}
+    },
     "color": {"field": "Category", "type": "nominal", "title": "Type"},
     "tooltip": [
       {"field": "Suburb", "type": "nominal"},
